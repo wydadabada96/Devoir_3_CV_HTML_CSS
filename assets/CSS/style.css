@@ -1,3 +1,65 @@
-h1 {
-    text-align: center;
+header {
+    display: flex;
+    justify-content: space-between; 
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #17abb3; 
+    padding: 20px;
+}
+.header_left img {
+    width: 120px; 
+    height: 120px; 
+    border-radius: 50%; 
+    object-fit:cover; 
+    border: 3px solid #333;
+    margin-left: 50px;
+}
+.header_right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;  
+    align-items: center;     
+    justify-content: center; 
+    margin: 0;                
+    text-align: center;      
+}
+h1{
+    margin-bottom: 0;
+}
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.contact-list li {
+    display: flex;
+    align-items:center;
+    font-size: 16px;
+    position: relative;
+    padding-left: 28px; 
+}
+
+
+.contact-list li.Mail {
+    background: url("../images/Pictograms/mail.png") no-repeat left center;
+    background-size: 20px 20px;
+}
+
+.contact-list li.tel {
+    background: url("../images/Pictograms/tel.png") no-repeat left center;
+    background-size: 20px 20px;
+}
+
+.contact-list li.adresse {
+    background: url("../images/Pictograms/adresse.png") no-repeat left center;
+    background-size: 20px 20px;
+}
+
+.contact-list li.permis {
+    background: url("../images/Pictograms/permis.png") no-repeat left center;
+    background-size: 20px 20px;
 }
