@@ -1,11 +1,14 @@
 
-body{
-    background: color #f5f5f5 ;
+.page_sizing{
+    background-color:  #f5f5f5 ;
     margin: 0;
     padding: 0;
 }
-main, header {
-    max-width: 1200px;
+body {
+    margin: 0;
+}
+main, header, footer {
+    max-width: 1160px;
     margin: 0 auto;
     background-color: white; 
     box-sizing:border-box;
@@ -18,7 +21,7 @@ h1, h2, h3{
 }
 @font-face {
   font-family: "Raleway";
-  src: url(../Fonts/Raleway-Regular.woff) format('woff');
+  src: url(../fonts/Raleway-Regular.woff) format('woff');
   font-weight: 400;
   font-style: normal;
 }
@@ -42,6 +45,11 @@ header {
     object-fit:cover; 
     border: 3px solid white;
     margin-left: 100px;
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+}
+.header_left img:hover{
+    transform: scale(1.05);
 }
 .header_right {
     flex: 1;
@@ -65,44 +73,51 @@ h2{
 .contact-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    grid-template-columns: max-content max-content;
+  gap: 10px 30px; 
+  justify-content: center
 }
-
 .contact-list li {
     display: flex;
     align-items:center;
     font-size: 16px;
     position: relative;
     padding-left: 28px; 
-    font-size: smaller;
+    font-size: smaller;  
 }
-
-
+.contact-list li a {
+    text-decoration: none;
+    font-weight: bold;
+}
 .contact-list li.Mail {
-    background: url("../images/Pictograms/mail.png") no-repeat left center;
-    background-size: 20px 20px;
+    background: url("../images/icons/mail.png") no-repeat left center;
+    background-size: 15px 15px;
     filter: brightness(0) invert(1);
+    border-radius: 0;
 }
-
 .contact-list li.tel {
-    background: url("../images/Pictograms/tel.png") no-repeat left center;
-    background-size: 20px 20px;
+    background: url("../images/icons/tel.png") no-repeat left center;
+    background-size: 15px 15px;
     filter: brightness(0) invert(1);
+    border-radius: 0;
 }
 
 .contact-list li.adresse {
-    background: url("../images/Pictograms/adresse.png") no-repeat left center;
-    background-size: 20px 20px;
+    background: url("../images/icons/adresse.png") no-repeat left center;
+    background-size: 15px 15px;
     filter: brightness(0) invert(1);
+    border-radius: 0;
 }
-
 .contact-list li.permis {
-    background: url("../images/Pictograms/permis.png") no-repeat left center;
-    background-size: 20px 20px;
+    background: url("../images/icons/permis.png") no-repeat left center;
+    background-size: 15px 15px;
     filter: brightness(0) invert(1);
+    border-radius: 0;
+}
+a {
+    list-style: none;
 }
 
 /* main */
@@ -126,10 +141,10 @@ h3{
     margin: 35px 0 9px;
 }
 hr {
-    border: none;              /* on enlève la bordure par défaut */
-    height: 2px;               /* épaisseur */
-    background-color: #e3e3e3;   /* couleur */
-    margin: 10px 0;            /* espace autour */
+    border: none;
+    height: 2px;
+    background-color: #e3e3e3;
+    margin: 10px 0;            
 }
 
 /* section:main */
@@ -138,10 +153,32 @@ hr {
     text-align: justify;
 }
 .flex_container {
+  position: relative;
   display: flex;
-  justify-content: space-between; /* espace entre gauche et droite */
-  align-items: baseline;          /* aligne sur la ligne de base du texte */
-  margin-bottom: 20px;            /* un peu d’espace entre les lignes */
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+.flex_container::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #17abb3;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease;
+}
+
+.flex_container:hover {
+  background-color: #eef1f2;
+  padding: 10px 5px 10px 10px;
+}
+.flex_container:hover::before {
+  transform: scaleY(1);
 }
 .title {
     font-weight: bold;
@@ -150,14 +187,22 @@ hr {
     font-style: italic;
     font-size: smaller;
 }
-.period{
-    color: #17abb3;
+.title_description {
+  flex: 1;
+  padding-right: 15px;
 }
+.period {
+  flex: 0 0 180px;
+  text-align: right; 
+  color: #17abb3;
+}
+
+/* section:secondary */
 .skill{
   display: flex;
   flex-direction: row;
-  justify-content:space-between; /* espace entre gauche et droite */    
-  flex-wrap: wrap;      /* aligne sur la ligne de base du texte */
+  justify-content:space-between;  
+  flex-wrap: wrap;
   margin-bottom: 8px;  
 }
 .star_filled {
@@ -180,12 +225,11 @@ hr {
   margin-bottom: 6px;
 }
 ul {
-  list-style: square;  /* enlève les puces */
+  list-style: square;
   margin: 0;
-  padding-left: 20px;   /* retour à la ligne si trop long */
-  gap: 10px 20px;    /* espace entre les items */
+  padding-left: 20px;
+  gap: 10px 20px;
 }
-
 ul li {
   background: #eef1f2;
   padding: 0 10px;
@@ -195,15 +239,25 @@ li::marker {
     font-size: 1.5em;
     color: #17abb3;
 }
+
+/* Footer */
 footer {
     display: flex;
+    flex-direction: column;
     justify-content:center; 
     align-items: center;
+    flex-wrap: wrap;
     background-color: #17abb3; 
     padding: 20px;
+    color: white;
 }
 footer img {
   width: 30px;   /* largeur fixée */
   height: 30px;  /* hauteur fixée */
   margin: 0 10px; 
+  filter: brightness(0) invert(1);
+  transition: opacity 0.3s ease;
+}
+footer img:hover {
+  opacity: 0.7;
 }
